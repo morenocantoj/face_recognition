@@ -108,3 +108,6 @@ images/*.png
 images/*.jpg
 output/*.png
 output/*.jpg
+
+# OS X trash
+.DS_Store
