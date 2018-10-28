@@ -1,8 +1,11 @@
 import cv2
 import sys
+import ntpath
+import os
 
 # Get user supplied values
 imagePath = sys.argv[1]
+fileName = ntpath.basename(imagePath)
 cascPath = "haarcascade_frontalface_default.xml"
 
 # Create the haar cascade
@@ -28,4 +31,9 @@ for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
 cv2.imshow("Faces found", image)
-cv2.waitKey(0)
+
+# Split complete filename for extracting base name and extension
+fileParts = os.path.splitext(fileName)
+
+# Save image with detected faces
+cv2.imwrite("output/" + fileParts[0] + "_faced" + fileParts[1], image)
