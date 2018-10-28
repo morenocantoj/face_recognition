@@ -60,6 +60,8 @@ for i in range(0, detections.shape[2]):
 
 print("Found {0} faces!".format(facesNumber))
 
-# Show the output image
-cv2.imshow("Output", image)
-cv2.waitKey(0)
+# Split complete filename for extracting base name and extension
+fileParts = os.path.splitext(fileName)
+
+# Save image with detected faces
+cv2.imwrite("output/" + fileParts[0] + "_faced" + fileParts[1], image)
